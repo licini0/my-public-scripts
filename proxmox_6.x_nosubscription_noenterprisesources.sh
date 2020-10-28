@@ -26,7 +26,10 @@ sed -i "\$adeb http://download.proxmox.com/debian/pve $distribution pve-no-subsc
 echo "- Hiding Enterprise sources list"
 sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
 
-#4 - Run updates:
+#4: Run updates:
 echo "- Updating System"
 apt-get -y update
 apt-get -y dist-upgrade
+
+#5: Restart Proxmox
+reboot
