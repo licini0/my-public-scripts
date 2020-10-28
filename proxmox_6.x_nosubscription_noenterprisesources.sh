@@ -25,3 +25,8 @@ echo "- Adding no-subscription entry to sources.list"
 sed -i "\$adeb http://download.proxmox.com/debian/pve $distribution pve-no-subscription" /etc/apt/sources.list
 echo "- Hiding Enterprise sources list"
 sed -i 's/^/#/' /etc/apt/sources.list.d/pve-enterprise.list
+
+#4 - Run updates:
+echo "- Updating System"
+apt-get -y update
+apt-get -y dist-upgrade
