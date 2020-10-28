@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# licini0 - 2020
+# licini0 - Oct. 2020
 
 # USAGE
 # You can run this scritp directly using:
