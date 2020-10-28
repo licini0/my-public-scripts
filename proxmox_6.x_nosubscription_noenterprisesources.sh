@@ -4,7 +4,7 @@
 
 # USAGE
 # You can run this scritp directly using:
-# wget -O - https://github.com/licini0/scripts/raw/main/proxmox_nosubscription_noenterprisesources_update.sh | bash
+# wget -O - https://raw.githubusercontent.com/licini0/my-public-scripts/main/proxmox_6.x_nosubscription_noenterprisesources.sh | bash
 
 # Sources:
 # https://github.com/Tontonjo/proxmox/blob/master/pve_nosubscription_noenterprisesources_update.sh
