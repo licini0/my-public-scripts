@@ -3,7 +3,7 @@
 ##################################
 wget -q -O - https://apt.mopidy.com/mopidy.gpg | sudo apt-key add -
 sudo wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster.list
-sudo apt-get update && sudo apt-get -y install mopidy mopidy-spotify mopidy-podcast-itunes mopidy-tunein python3-pip
+sudo apt-get update && sudo apt-get -y install mopidy mopidy-mpd mopidy-spotify mopidy-podcast-itunes mopidy-tunein python3-pip
 sudo python3 -m pip install Mopidy-Iris
 
 echo '[http]' | sudo tee -a /etc/mopidy/mopidy.conf
@@ -20,20 +20,27 @@ echo 'country = CH' | sudo tee -a /etc/mopidy/mopidy.conf
 echo 'locale = en_GB' | sudo tee -a /etc/mopidy/mopidy.conf
 echo '' | sudo tee -a /etc/mopidy/mopidy.conf
 echo '[spotify]' | sudo tee -a /etc/mopidy/mopidy.conf
-echo 'username = yourspotifyusername' | sudo tee -a /etc/mopidy/mopidy.conf
-echo 'password = yourspotifyaccount' | sudo tee -a /etc/mopidy/mopidy.conf
-echo 'client_id = yourspotifyclientid' | sudo tee -a /etc/mopidy/mopidy.conf
-echo 'client_secret = yourspotifyclientsecret' | sudo tee -a /etc/mopidy/mopidy.conf
+echo 'username = ddddddddddddddddddddddddddd' | sudo tee -a /etc/mopidy/mopidy.conf
+echo 'password = dddddddddddddddddddddddddd' | sudo tee -a /etc/mopidy/mopidy.conf
+echo 'client_id = dddddddddddddddddddddddddd' | sudo tee -a /etc/mopidy/mopidy.conf
+echo 'client_secret = ddddddddddddddddddddd' | sudo tee -a /etc/mopidy/mopidy.conf
+echo '' | sudo tee -a /etc/mopidy/mopidy.conf
+echo '[mpd]' | sudo tee -a /etc/mopidy/mopidy.conf
+echo 'hostname = ::' | sudo tee -a /etc/mopidy/mopidy.conf
+echo 'port = 6600' | sudo tee -a /etc/mopidy/mopidy.conf
+echo '' | sudo tee -a /etc/mopidy/mopidy.conf
+echo '[podcast]' | sudo tee -a /etc/mopidy/mopidy.conf
+echo 'enabled = false' | sudo tee -a /etc/mopidy/mopidy.conf
 
 sudo dpkg-reconfigure mopidy
-sudo apt-get update && sudo apt-get -y install libavahi-client3 libavahi-common3 libflac8 libopus0 libsoxr0 libvorbisenc2 avahi-daemon
-sudo apt-get update && sudo apt-get -y install libasound2 libavahi-client3 libavahi-common3 libc6 libexpat1 libflac8 libgcc1 libogg0 libopus0 libsoxr0 libstdc++6 libvorbis0a libvorbisenc2
-sudo apt --fix-broken install
+sudo apt-get update && sudo apt-get -y install libavahi-client3 libavahi-common3 libflac8 libopus0 libsoxr0 libvorbisenc2
 wget https://github.com/badaix/snapcast/releases/download/v0.22.0/snapserver_0.22.0-1_amd64.deb
 sudo dpkg -i snapserver_0.22.0-1_amd64.deb
 sudo update-rc.d snapserver defaults
-sudo sed -i 's/output = alsasink/output = audioresample ! audioconvert ! audio\/x-raw,rate=48000,channels=2,format=S16LE ! filesink location=\/tmp\/snapfifo/g' /etc/mopidy/mopidy.conf
-
+sudo sed -i 's/output = alsasink/output = audioresample ! audioconvert ! audio\/x-raw,rate=48000,channels=2,format=S16LE ! filesink location=\/tmp\/snapgeneral/g' /etc/mopidy/mopidy.conf
+sudo sed -i 's/source = pipe:\/\/\/tmp\/snapfifo?name=default/source = pipe:\/\/\/tmp\/snapgeneral?name=MediaServer/g' /etc/snapserver.conf
+sudo sed -i 's/#source = tcp:\/\/127.0.0.1?name=mopidy_tcp/source = pipe:\/\/\/tmp\/snapbluetooth?name=Bluetooth/g' /etc/snapserver.conf
+sudo systemctl restart mopidy && sudo systemctl restart snapserver
 
 ##################################
 #### Installation client side ####
@@ -41,9 +48,19 @@ sudo sed -i 's/output = alsasink/output = audioresample ! audioconvert ! audio\/
 sudo apt-get update && sudo apt-get -y install libavahi-client3 libavahi-common3 libflac8 libopus0 libsoxr0 libvorbisenc2 avahi-daemon
 wget https://github.com/badaix/snapcast/releases/download/v0.22.0/snapclient_0.22.0-1_armhf.deb
 sudo dpkg -i snapclient_0.22.0-1_armhf.deb
-sudo sed -i 's/SNAPCLIENT_OPTS=""/SNAPCLIENT_OPTS="--host mu1.la.trro.net"/g' /etc/default/snapclient
+sudo sed -i 's/SNAPCLIENT_OPTS=""/SNAPCLIENT_OPTS="--host mopidyip"/g' /etc/default/snapclient
 sudo update-rc.d snapclient defaults
 
+
+#########################################
+#### Integration into home assistant ####
+#########################################
+media_player:
+  - platform: mpd
+	host: homeassistantip
+	name: General
+  - platform: snapcast
+	host: homeassistantip
 
 ##############################
 #### Maintenance commands ####
