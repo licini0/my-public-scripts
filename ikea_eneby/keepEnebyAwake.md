@@ -7,7 +7,7 @@ tested on dietpi distro running on Rpi B gen 1 with shairplay-sync
 
 From the root user home folder (~/ when logged in to root)
 
-`wget https://s.put.re/w8s9Lk5A.wav -O /root/15tone.wav`
+`wget https://github.com/licini0/my-public-scripts/raw/main/ikea_eneby/keepenebyawake.wav -O /root/keepenebyawake.wav`
 
 ### Create script to detect audio-playback, and if not play silent tone
 
@@ -21,7 +21,7 @@ if grep -q RUNNING /proc/asound/card*/*p/*/status 2>&1; then
    echo "Audio playing, not doing anything"
 else
    echo "No audio playing, playing silent tone"
-   aplay /root/15tone.wav
+   aplay /root/keepenebyawake.wav
 fi
 ```
 
