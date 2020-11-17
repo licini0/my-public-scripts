@@ -46,3 +46,8 @@ add the line:
 ctrl:x to save and exit
 
 ### You might hear a quiet "pop" every 15 minutes or so when no audio is otherwise playing.
+
+
+
+Sources :
+https://gist.githubusercontent.com/Porco-Rosso/17df8a06b2cbf654c191a116901bc421/raw/4d23972baf77ac8892856bc2a5c29b217ad6b9f4/keepEnebyAwake.md
