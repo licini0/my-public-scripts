@@ -41,7 +41,7 @@ open crontab
 
 add the line:
 
-`*/15 * * * * /bin/bash /home/pi/playsoundifnotplaying.sh >/dev/null 2>&1`
+`*/10 * * * * /bin/bash /home/pi/playsoundifnotplaying.sh >/dev/null 2>&1`
 
 ctrl:x to save and exit
 
