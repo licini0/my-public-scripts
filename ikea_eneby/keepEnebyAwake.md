@@ -7,11 +7,11 @@ tested on dietpi distro running on Rpi B gen 1 with shairplay-sync
 
 From the root user home folder (~/ when logged in to root)
 
-`wget https://github.com/licini0/my-public-scripts/raw/main/ikea_eneby/keepenebyawake.wav -O /root/keepenebyawake.wav`
+`wget https://github.com/licini0/my-public-scripts/raw/main/ikea_eneby/keepenebyawake.wav -O ~/keepenebyawake.wav`
 
 ### Create script to detect audio-playback, and if not play silent tone
 
-`nano playsoundifnotplaying.sh`
+`nano ~/playsoundifnotplaying.sh`
 
 copy paste the follow script:
 
@@ -21,7 +21,7 @@ if grep -q RUNNING /proc/asound/card*/*p/*/status 2>&1; then
    echo "Audio playing, not doing anything"
 else
    echo "No audio playing, playing silent tone"
-   aplay /root/keepenebyawake.wav
+   aplay ~/keepenebyawake.wav
 fi
 ```
 
@@ -29,9 +29,9 @@ ctrl:x to save and exit
 
 then make the script executable:
 
-`chmod +x ./playsoundifnotplaying.sh`
+`chmod +x ~/playsoundifnotplaying.sh`
 
-you can test the script by running `./playsoundifnotplaying.sh` 
+you can test the script by running `~/playsoundifnotplaying.sh` 
 
 ### Add to following to crontab, for the script to run every 15 minutes (Eneby sleep time is 20min):
 
@@ -41,7 +41,7 @@ open crontab
 
 add the line:
 
-`*/15 * * * * /bin/bash /root/playsoundifnotplaying.sh >/dev/null 2>&1`
+`*/15 * * * * /bin/bash /home/pi/playsoundifnotplaying.sh >/dev/null 2>&1`
 
 ctrl:x to save and exit
 
