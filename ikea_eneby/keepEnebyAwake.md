@@ -1,11 +1,8 @@
 ## How to stop the IKEA Eneby from going to sleep while on AUX
-for a raspberry pi, or debian-based device connected by 3.5mm jack.
-
-tested on dietpi distro running on Rpi B gen 1 with shairplay-sync
+For a raspberry pi, or debian-based device connected by 3.5mm jack. Tested on raspios-buster with snapcast installed.
 
 ### Download quiet low tone file, rename to 15tone.wav
-
-From the root user home folder (~/ when logged in to root)
+From the pi user home folder (~/ when ssh with pi user)
 
 `wget https://github.com/licini0/my-public-scripts/raw/main/ikea_eneby/keepenebyawake.wav -O ~/keepenebyawake.wav`
 
@@ -41,7 +38,7 @@ open crontab
 
 add the line:
 
-`*/10 * * * * /bin/bash /home/pi/playsoundifnotplaying.sh >/dev/null 2>&1`
+`*/15 * * * * /bin/bash /home/pi/playsoundifnotplaying.sh >/dev/null 2>&1`
 
 ctrl:x to save and exit
 
