@@ -113,6 +113,12 @@ sudo systemctl status snapserver`
 **Verify snapclient status:**<br/>
 `sudo systemctl status snapclient`
 
+**Restart Mopidy:**<br/>
+`sudo systemctl restart mopidy`
+
+**Verify mopidy current config:**<br/>
+`sudo mopidyctl config`
+
 ## Sources
 https://www.addictivetips.com/ubuntu-linux-tips/listen-spotify-from-the-linux-terminal-with-librespot/<br/>
 https://mondedie.fr/d/10750-tuto-multiroom-audio-avec-snapcast-sur-un-rpi<br/>
