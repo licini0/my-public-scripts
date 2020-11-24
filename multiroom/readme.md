@@ -89,6 +89,8 @@ sudo chmod +x /usr/local/bin/librespotu1 && sudo chmod +x /usr/local/bin/libresp
 sudo chmod 755 /opt/librespotu1/ && sudo chmod 755 /opt/librespotu2/ && sudo chmod 755 /opt/librespotu3/
 sudo reboot
 ```
+### - Installing mopidy for webradio source
+Coming soon...
 
 ## - Installing the client side
 ```
