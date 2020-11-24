@@ -118,4 +118,8 @@ https://www.addictivetips.com/ubuntu-linux-tips/listen-spotify-from-the-linux-te
 https://mondedie.fr/d/10750-tuto-multiroom-audio-avec-snapcast-sur-un-rpi<br/>
 https://snapcraft.io/blog/ubuntu-core-smart-speaker<br/>
 https://ubuntuforums.org/showthread.php?t=2422283<br/>
-https://github.com/librespot-org/librespot
+https://github.com/librespot-org/librespot<br/>
+https://github.com/badaix/snapcast/releases<br/>
+https://www.youtube.com/watch?v=0YnSwYFpzDA<br/>
+https://www.youtube.com/watch?v=eQC6nTzvCbU<br/>
+https://docs.mopidy.com/en/latest<br/>
