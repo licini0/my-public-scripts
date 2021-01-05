@@ -15,7 +15,13 @@ Any other software or hardware able to output to a fifo file
 Source ---> fifo file -------> Snapcast server ----> network ----> Snapcast client
 
 **What will we achieve in this how-to?**<br/>
-We will have 4 sources (3 spotify connect + 1 webradio with mutiple webradio streams available) streaming to as many devices as we wish.
+We will have 4 sources streaming to as many devices as we wish.
+
+The 4 sources will be splitted as following :
+- 3 spotify connect - the reason for 3 spotify connect sources are that one will be linked to my account, another one linked to my girlfriend's account and last one used on multiple multimedia devices accross the appartement. This will allow to send 3 different spotify content simultaniously.
+- 1 webradio source with few webradio to chose from - to switch from webradio1 to webradio2 I will use home assistant. Initially I was thinking on doing the same for the webradios as for the spotify connect. But finally to avoid having a too big list of sources in snapcast, I decided to put one single source webradio in snapcast and simply control the player to chose which webradio to listen.
+
+All the system will be integrated with home assistant but this integration will not be explained here.
 
 ## Installing the server side
 I want a lightweight server, so let's remove the GUI (yes, I could use Ubuntu server instead of desktop but then some depedencies are missing and therefore the result is the same), but before that I will enable ssh to be able to manage the server without the need of a screen.
