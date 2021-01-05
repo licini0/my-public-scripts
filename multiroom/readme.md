@@ -90,19 +90,29 @@ sudo chmod 755 /opt/librespotu1/ && sudo chmod 755 /opt/librespotu2/ && sudo chm
 sudo reboot
 ```
 ### - Installing mopidy for webradio source
-This step is still under construction and may not work yet...
+!!!!!! This step is still under construction and may not work yet...
 ```
 sudo apt-get update && sudo apt-get -y install mpd
 ```
 
 Modify the mpd config file to replace output to fifo file :
 ```
+sudo nano /etc/mpd.conf
+```
+
+```
 audio_output {
-        type            "fifo"
-        name            "radiostreammutliroom"
-        path            ""
-        enabled         "yes"
+	type		"fifo"
+	name		"radiostreammultiroom"
+	path		"/tmp/snapradios"
+	format		"48000:16:2"
+	mixer_type		"software"
 }
+```
+
+Restart mpd to apply the config
+```
+sudo systemctl restart mpd.service
 ```
 
 ## - Installing the client side
