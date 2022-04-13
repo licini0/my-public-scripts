@@ -1,5 +1,7 @@
 # HOW-TO INSTALL A MULTIROOM
 
+## !! I'M NOT WORKING ON THIS PROJECT ANYMORE, IN THE MEANTIME I MOVED TO A READY TO USE MULTI-ROOM SOLUTION !!
+
 ## Before starting... please read me...
 This guide will help to install a multiroom system based on a server with multiple sources streaming to multiple client devices.
 I assume the central server is runing Ubuntu Desktop 20.04 LTS out of the box with all the current updates.
